@@ -1,0 +1,81 @@
+#include<stdio.h>
+	int itemCnt=0;
+	int Money=100000;
+	int n[1000];
+	int m[1000];
+	void itembuy(int cost, int i) {
+		if (Money >= cost) {
+			itemCnt += m[i];
+			Money -= cost;
+			printf("[item bought successfully]\n");
+			printf("item count: %d\n", itemCnt);
+			printf("Money left: %d\n", Money);
+		}
+		else printf("Not enough Money\n");
+	}
+
+	int main() {
+		printf("<Welcome to Will's item Shop>\n\n");
+		printf("# Red Potion(1)\nCost: 1000\n");
+		printf("# Blue Potion(2)\nCost: 2000\n");
+		printf("# White Potion(3)\nCost: 5000\n");
+		printf("# Black Potion(4)\nCost: 10000\n");
+		printf("# Snake Juice(5)\nCost: 15000\n");
+		printf("# Cat head Juice(6)\nCost: 20000\n");
+		printf("# Dolphin Juice(7)\nCost:50000\n");
+		printf("\n# Exit(0)\n\n");
+		printf("-Enter the referring number-\n");
+		for (int i = 0;; i++) {
+			printf("\nitem number: ");
+			scanf("%d", &n[i]);
+			if (n[i] == 0) {
+				printf("\nThank you for visiting Will's item shop !\n");
+				break;
+			}
+			else{	
+				switch (n[i]) {
+				case 1:
+					printf("Red potion\nAmount: ");
+					scanf("%d", &m[i]);
+					itembuy(1000 * m[i], i);
+					break;
+				case 2:
+					printf("Blue Potion\nAmount: ");
+					scanf("%d", &m[i]);
+					itembuy(2000 * m[i], i);
+					break;
+				case 3:
+					printf("White Potion\nAmount: ");
+					scanf("%d", &m[i]);
+					itembuy(5000 * m[i], i);
+					break;
+				case 4:
+					printf("Black Potion\nAmount: ");
+					scanf("%d", &m[i]);
+					itembuy(10000 * m[i], i);
+					break;
+				case 5:
+					printf("Snake Juice\nAmount: ");
+					scanf("%d", &m[i]);
+					itembuy(15000 * m[i], i);
+					break;
+				case 6:
+					printf("Cat head Juice\nAmount: ");
+					scanf("%d", &m[i]);
+					itembuy(20000 * m[i], i);
+					break;
+				case 7:
+					printf("Dolphin Juice\nAmount: ");
+					scanf("%d", &m[i]);
+					itembuy(50000 * m[i], i);
+					break;
+				default:
+					printf("No item\n");
+					break;
+				}
+
+			}
+			
+		}
+	
+	}
