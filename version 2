@@ -1,0 +1,118 @@
+#include<stdio.h>
+int itemCnt = 0;
+int Money = 100000;
+int n[1000];
+int m[1000];
+struct productinfo {
+	char name[100]; int num; int cost;
+};
+void itembuy(productinfo* a,int* k) {
+	if (Money >= (a->cost)*(*k)) {
+		itemCnt += *k;
+		Money -= (a->cost)*(* k);
+		printf("[item bought successfully]\n");
+		printf("item count: %d\n", itemCnt);
+		printf("Money left: %d\n", Money);
+	}
+	else printf("Not enough Money\n");
+}
+
+void print(productinfo* a) {
+	printf("# %s(%d)\nCost: %d\n", a->name, a->num, a->cost);
+}
+int main() {
+	printf("<Will's Item Shop>\n\n");
+	productinfo redpotion = { "Red Potion", 1, 1000 };
+	productinfo bluepotion = { "Blue Potion",2,2000 };
+	productinfo whitepotion = { "White Potion",3,5000 };
+	productinfo blackpotion = { "Black Potion", 4, 10000 };
+	productinfo snakejuice = { "Snake Juice",5,15000 };
+	productinfo catheadjuice = { "Cathead Juice",6,20000 };
+	productinfo sourcandy = { "Sour Candy",7,30000 };
+	productinfo dolphinjuice = { "Dolphin Juice",8,50000 };
+	productinfo unicornjuice = { "Unicorn Juice",9,70000 };
+	print(&redpotion);
+	print(&bluepotion);
+	print(&whitepotion);
+	print(&blackpotion);
+	print(&snakejuice);
+	print(&catheadjuice);
+	print(&sourcandy);
+	print(&dolphinjuice);
+	print(&unicornjuice);
+	printf("\n# Exit(0)\n");
+
+	for (int i = 0;; i++) {
+		printf("\nItem number: ");
+		scanf("%d", &n[i]);
+		if (n[i] == 0) {
+			printf("\nThank you for visiting Will's item shop\n");
+			break;
+		}
+		else {
+			switch (n[i]) {
+			case 1:
+				print(&redpotion);
+				printf("Amount: ");
+				scanf("%d", &m[i]);
+				itembuy(&redpotion,&m[i]);
+				break;
+			case 2:
+				print(&bluepotion);
+				printf("Amount: ");
+				scanf("%d", &m[i]);
+				itembuy(&bluepotion, &m[i]);
+				break;
+			case 3:
+				print(&whitepotion);
+				printf("Amount: ");
+				scanf("%d", &m[i]);
+				itembuy(&whitepotion, &m[i]);
+				break;
+			case 4:
+				print(&blackpotion);
+				printf("Amount: ");
+				scanf("%d", &m[i]);
+				itembuy(&blackpotion, &m[i]);
+				break;
+			case 5:
+				print(&snakejuice);
+				printf("Amount: ");
+				scanf("%d", &m[i]);
+				itembuy(&snakejuice, &m[i]);
+				break;
+			case 6:
+				print(&catheadjuice);
+				printf("Amount: ");
+				scanf("%d", &m[i]);
+				itembuy(&catheadjuice, &m[i]);
+				break;
+			case 7:
+				print(&sourcandy);
+				printf("Amount: ");
+				scanf("%d", &m[i]);
+				itembuy(&sourcandy, &m[i]);
+				break;
+			case 8:
+				print(&dolphinjuice);
+				printf("Amount: ");
+				scanf("%d", &m[i]);
+				itembuy(&dolphinjuice, &m[i]);
+				break;
+			case 9:
+				print(&unicornjuice);
+				printf("Amount: ");
+				scanf("%d", &m[i]);
+				itembuy(&unicornjuice, &m[i]);
+				break;
+
+			default:
+				printf("No item\n");
+				break;
+			}
+
+		}
+
+	}
+
+}
