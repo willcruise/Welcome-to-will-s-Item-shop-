@@ -1,0 +1,141 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int itemcnt = 0;
+int Money = 100000;
+int n[1000];
+int m;
+char name[1000][100];
+int itemnum[1000];
+int cost[1000];
+
+struct productinfo {
+	char name[100]; int num; int cost;
+};
+
+void itembuy(productinfo* a, int* k) {
+	if (Money >= (a->cost) * (*k)) {
+		itemcnt += *k;
+		Money -= (a->cost) * (*k);
+		printf("[item bought successfully]\n");
+		printf("item count: %d\n", itemcnt);
+		printf("Money left: %d\n", Money);
+	}
+	else printf("Not enough Money\n");
+}
+
+void print(productinfo* a) {
+	printf("# %s(%d)\nCost: %d\n", a->name, a->num, a->cost);
+}
+
+void itemchosen(productinfo a) {
+	print(&a);
+	printf("Amount: ");
+	scanf("%d", &m);
+	itembuy(&a, &m);
+}
+
+void Name() {
+	strcpy(name[0], "Red Potion");
+	strcpy(name[1], "Blue Potion");
+	strcpy(name[2], "White Potion");
+	strcpy(name[3], "Black Potion");
+	strcpy(name[4], "Snake Juice");
+	strcpy(name[5], "Cathead Juice");
+	strcpy(name[6], "Sour Candy");
+	strcpy(name[7], "Dolphin Juice");
+	strcpy(name[8], "Unicorn Juice");
+	strcpy(name[9], "Legendary Spellbook");
+}
+void Itemnum() {
+	itemnum[0] = 1;
+	itemnum[1] = 2;
+	itemnum[2] = 3;
+	itemnum[3] = 4;
+	itemnum[4] = 5;
+	itemnum[5] = 6;
+	itemnum[6] = 7;
+	itemnum[7] = 8;
+	itemnum[8] = 9;
+	itemnum[9] = 10;
+}
+void Cost() {
+	cost[0] = 1000;
+	cost[1] = 2000;
+	cost[2] = 5000;
+	cost[3] = 10000;
+	cost[4] = 15000;
+	cost[5] = 20000;
+	cost[6] = 30000;
+	cost[7] = 50000;
+	cost[8] = 70000;
+	cost[9] = 100000;
+}
+
+int main() {
+	printf("<Will's Item Shop>\n\n");
+
+	Name();
+	Itemnum();
+	Cost();
+
+	struct productinfo o[1000];
+
+	for (int i = 0; i < 10; i++) {
+		strcpy(o[i].name, name[i]);
+		o[i].num = itemnum[i];
+		o[i].cost = cost[i];
+	}
+	for (int i = 0; i < 10; i++) {
+		print(&o[i]);
+	}
+	printf("\n# Exit(0)\n");
+
+	for (int i = 0;; i++) {
+		printf("\nitem number: ");
+		scanf("%d", &n[i]);
+
+		switch (n[i]) {
+		case 0:
+			printf("\nThank you for visiting Will's item shop.\n");
+
+			exit(0);
+		case 1:
+			itemchosen(o[0]);
+			break;
+		case 2:
+			itemchosen(o[1]);
+			break;
+		case 3:
+			itemchosen(o[2]);
+			break;
+		case 4:
+			itemchosen(o[3]);
+			break;
+		case 5:
+			itemchosen(o[4]);
+			break;
+		case 6:
+			itemchosen(o[5]);
+			break;
+		case 7:
+			itemchosen(o[6]);
+			break;
+		case 8:
+			itemchosen(o[7]);
+			break;
+		case 9:
+			itemchosen(o[8]);
+			break;
+		case 10:
+			itemchosen(o[9]);
+			break;
+		default:
+			printf("No item\n");
+			break;
+		}
+
+	}
+
+}
