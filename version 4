@@ -5,7 +5,6 @@
 int itemcnt = 0;
 int Money = 100000;
 int n[1000];
-int m;
 char name[1000][100];
 int itemnum[1000];
 int cost[1000];
@@ -30,6 +29,7 @@ void print(productinfo* a) {
 }
 
 void itemchosen(productinfo a) {
+	int m;
 	print(&a);
 	printf("Amount: ");
 	scanf("%d", &m);
